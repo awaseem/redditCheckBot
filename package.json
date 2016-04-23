@@ -1,0 +1,11 @@
+{
+  "name": "telegram-bot",
+  "version": "1.0.0",
+  "description": "A simple bot for telegram!",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Ali Waseem",
+  "license": "MIT"
+}
