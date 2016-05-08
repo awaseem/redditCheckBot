@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import Telegram from "node-telegram-bot-api";
+import validUrl from "valid-url";
 import config from "./config";
 
 const REDDIT_URL = "https://www.reddit.com";
@@ -19,6 +20,7 @@ function createInlineResultItem(redditItem) {
         type: "article",
         id: redditItemData.id,
         title: redditItemData.title,
+        thumb_url: validUrl.isUri(redditItemData.thumbnail) ? redditItemData.thumbnail : undefined,
         input_message_content: {
             message_text: redditItemData.url,
         },
