@@ -13,7 +13,7 @@ function queryReddit(subReddit) {
         .then((res) => res.json());
 }
 
-function createInlineResults(redditItem) {
+function createInlineResultItem(redditItem) {
     const redditItemData = redditItem.data;
     return {
         type: "article",
@@ -25,15 +25,18 @@ function createInlineResults(redditItem) {
     };
 }
 
+function createInlineResults(redditJson) {
+    if (redditJson.error) {
+        throw new Error("Error: no subreddit found!");
+    } else {
+        return redditJson.data.children.map(x => createInlineResultItem(x));
+    }
+}
+
 const bot = new Telegram(config.token, { polling: true });
 
 bot.on("inline_query", (msg) => {
     queryReddit(msg.query)
-        .then((json) => {
-            const inlineResults = json.data.children.map(x => createInlineResults(x));
-            console.log(inlineResults);
-            return bot.answerInlineQuery(msg.id, inlineResults);
-        })
-        .then(data => console.log(data))
-        .catch((err) => console.error(err));
+        .then(redditResponse => bot.answerInlineQuery(msg.id, createInlineResults(redditResponse)))
+        .catch(() => bot.answerInlineQuery(msg.id, []));
 });
