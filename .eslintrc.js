@@ -9,10 +9,10 @@ module.exports = {
         "react"
     ],
     "globals": {
-        "chrome": true,
         "mocha": true
     },
     "env": {
-        "mocha": true
+        "mocha": true,
+        "node": true
     },
 };
