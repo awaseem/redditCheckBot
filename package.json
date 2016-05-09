@@ -1,7 +1,7 @@
 {
-  "name": "telegram-bot",
+  "name": "redditCheckBot",
   "version": "1.0.0",
-  "description": "A simple bot for telegram!",
+  "description": "A simple bot for telegram that displays reddit posts via inline results!",
   "main": "main.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register --timeout 15000",
@@ -10,6 +10,10 @@
   },
   "author": "Ali Waseem",
   "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/awaseem/redditCheckBot.git"
+  },
   "dependencies": {
     "babel-preset-es2015": "^6.6.0",
     "babel-register": "^6.7.2",
