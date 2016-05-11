@@ -1,5 +1,7 @@
 # Reddit Check Bot
 
+[![Build Status](https://travis-ci.org/awaseem/redditCheckBot.svg?branch=master)](https://travis-ci.org/awaseem/redditCheckBot)
+
 Reddit Check Bot allows you to view reddit items within inline results so that you can share top posts without leaving telegram!
 
 ## Setup
