@@ -10,6 +10,6 @@ before_install:
 after_success:
     - sleep 5
     - docker build -t awaseem/redditcheckbot:$TRAVIS_BRANCH-$TRAVIS_NODE_VERSION .
-    - sleep 10
+    - sleep 5
     - docker push awaseem/redditcheckbot:$TRAVIS_BRANCH-$TRAVIS_NODE_VERSION
     - docker logout
