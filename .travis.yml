@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+node_js:
+    - "4.4.4"
+services:
+    - docker
+before_install:
+    - sleep 15
+    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+after_success:
+    - sleep 5
+    - docker build -t awaseem/redditCheckBot:$TRAVIS_BRANCH-$TRAVIS_NODE_VERSION .
+    - sleep 10
+    - docker push awaseem/redditCheckBot:$TRAVIS_BRANCH-$TRAVIS_NODE_VERSION
+    - docker logout
